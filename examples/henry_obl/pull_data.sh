@@ -1,0 +1,1 @@
+scp -r hdyuan@ducati.astro.princeton.edu:/u/hdyuan/Documents/Github/triaxial_sporbit/data/grid/$2 /Users/henryyuan/Documents/Github/triaxial_sporbit/data/grid/

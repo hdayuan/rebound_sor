@@ -1,1 +1,7 @@
-insert
+examples/triax_spin/
+henry_obl/2body_data_obl/
+henry_obl/plots/
+henry_triax/2body_data_triax/
+henry_triax/plots/
+henry_obl/pull_data.sh
+henry_triax/pull_data.sh
