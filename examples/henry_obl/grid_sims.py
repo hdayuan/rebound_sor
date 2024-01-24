@@ -39,7 +39,7 @@ if __name__ == '__main__':
     # to change params, see keyword args in run_sim()
     n_trials = 50 # if I change this, make sure to also change in keyword args in run_sim()
     start = time.time()
-    with mp.Pool(5) as pool:
+    with mp.Pool(os.cpu_count()) as pool:
         pool.map(run_sim, range(n_trials))
 
     tot_time = time.time() - start
