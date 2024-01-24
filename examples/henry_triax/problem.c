@@ -95,11 +95,11 @@ void dydt_rb(struct reb_ode* const ode, double* const yDot, const double* const 
     double J2=1e-3;
     double triax=1e-5;
     /* double triax=0; */
-    double Q_tide=1e2;
-    double k2=1.5;
-    double ms=1;
-    double rp=2 * REARTH;
-    double mp=4 * MEARTH;
+    double Q_tide=300;
+    double k2=0.3;
+    double ms=1.034;
+    double rp=1.498 * REARTH;
+    double mp=3.83 * MEARTH;
     double tidal_dt;
     int i;
     double s_norm, si, sj, sk;
@@ -112,7 +112,7 @@ void dydt_rb(struct reb_ode* const ode, double* const yDot, const double* const 
     double svec_ijk[3];
     double svec_xyz[3];
     double n;
-    double a = 0.4;
+    double a = 0.1153;
     double I = k * mp * rp*rp;
     double J = I * (1 + triax);
     double K = I * (1 + J2);
@@ -151,7 +151,7 @@ void dydt_rb(struct reb_ode* const ode, double* const yDot, const double* const 
     double rvec[3] = {ps[1].x - ps[0].x, ps[1].y - ps[0].y, ps[1].z - ps[0].z};
 
     // a = o.a;
-    year = pow(a, 1.5);
+    year = pow(a, 1.5) / pow(ms, 0.5);
     n = 2 * M_PI / year;
     tidal_dt = atan(1 / Q_tide) / (2 * n);
 
@@ -210,12 +210,12 @@ int main(int argc, char* argv[]) {
     double ax0=0.0;
 
     // orbital params
-    double a=0.4;
-    double ms=1;
-    double mp=4 * MEARTH;
+    double a=0.1153;
+    double ms=1.034; // mass of kepler 36
+    double mp=3.83 * MEARTH; // mass of kepler 36b
     // tide params
     // integration params
-    double year = pow(a, 1.5);
+    double year = pow(a, 1.5) / pow(ms, 0.5);
     double tol=1e-8; // integrator tolerance
     double reb_dt = 1e-2; // integrator dt, in years
     double out_dt=(int) tf / 1000; // in orbital periods; outputs 1000 data points
